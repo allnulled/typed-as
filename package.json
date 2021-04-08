@@ -1,0 +1,21 @@
+{
+  "name": "@allnulled/typed-as",
+  "version": "0.0.1",
+  "description": "Library to automate validations",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha test/*.test.js"
+  },
+  "keywords": [
+    "validation",
+    "typing"
+  ],
+  "author": "allnulled",
+  "license": "WTFPL",
+  "dependencies": {
+    "is": "^3.3.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4"
+  }
+}
