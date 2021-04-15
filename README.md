@@ -11,13 +11,39 @@ Library to automate validations.
 ```js
 const { checkTypes, TypedConstructor } = require("@allnulled/typed-as");
 
-checkTypes({ name: "John", surname: "Smith" }, "name:string;surname:string"); // true
-checkTypes({ name: "Alice", surname: "Smith" }, "name:string;surname:number"); // false
-checkTypes({ name: undefined, age: 64 }, `
+checkTypes({
+    name: "John",
+    surname: "Smith" 
+}, "name:string;surname:string"); // true
+checkTypes({
+    name: "Alice",
+    surname: "Smith" 
+}, "name:string;surname:number"); // false
+checkTypes({
+    name: undefined,
+    age: 64
+}, `
     name : string | undefined ;
     age : gt( 18 ) ;
 `); // true
 ```
+
+The `TypedConstructor` class is useful for easily implement typage in classes creation:
+
+```js
+class MyTypedClass extends TypedConstructor {
+
+    static get ConstructorTypes() {
+        return `name:string|undefined;age:number&gt(18)`;
+    }
+
+    onConstructor(options = {}) {
+        Object.assign(this, options);
+    }
+
+}
+```
+
 
 # Validators
 

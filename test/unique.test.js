@@ -119,6 +119,20 @@ describe("Method: checkTypes", function() {
         `)).to.equal(true);
     });
 
+    
+    it("does not throw on invalid properties", function() {
+        expect(checkTypes({name: undefined, age: 19}, `
+            name : undefined | string ;
+            name.length : undefined | gt(6);
+            age : ge( 18 ) ;
+        `)).to.equal(true);
+        expect(checkTypes({name: "okido", age: 19}, `
+            name : undefined | string ;
+            name.length : undefined | gt(6);
+            age : ge( 18 ) ;
+        `)).to.equal(false);
+    });
+
 });
 
 describe("Class: TypedConstructor", function() {
